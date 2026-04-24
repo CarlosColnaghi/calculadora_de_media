@@ -6,6 +6,16 @@ class AverageCalculator extends StatefulWidget{
 }
 
 class _AverageCalculatorState extends State<AverageCalculator>{
+  String name = "";
+  String email = "";
+  String grades = "";
+  String average = "";
+
+  TextEditingController nameTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  List<TextEditingController> gradesTextEditingController = [TextEditingController(), TextEditingController(), TextEditingController()];
+  TextEditingController averageTextEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext buildContext){
     return Scaffold(
@@ -24,38 +34,60 @@ class _AverageCalculatorState extends State<AverageCalculator>{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _titleField("Calculadora de Média"),
-            _textField("Nome", "Digite o seu nome (ex: Carlos)"),
-            _textField("Email", "Digite o seu email (ex: carlos@email.com)", textInputType: TextInputType.number),
+            _textField("Nome", "Digite o seu nome (ex: Carlos)", textEditingController: nameTextEditingController),
+            _textField("Email", "Digite o seu email (ex: carlos@email.com)", textInputType: TextInputType.number, textEditingController: emailTextEditingController),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                _textField("Nota 1", "Digite a nota 1 (ex: 10.0)", textInputType: TextInputType.number, expanded:  true),
-                _textField("Nota 2", "Digite a nota 2 (ex: 10.0)", textInputType: TextInputType.number, expanded: true),
-                _textField("Nota 3", "Digite a nota 3 (ex: 10.0)", textInputType: TextInputType.number, expanded: true, lastField: true),
+                _textField("Nota 1", "Digite a nota 1 (ex: 10.0)", textInputType: TextInputType.number, expanded:  true, textEditingController: gradesTextEditingController[0]),
+                _textField("Nota 2", "Digite a nota 2 (ex: 10.0)", textInputType: TextInputType.number, expanded: true, textEditingController: gradesTextEditingController[1]),
+                _textField("Nota 3", "Digite a nota 3 (ex: 10.0)", textInputType: TextInputType.number, expanded: true, lastField: true, textEditingController: gradesTextEditingController[2]),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                _button("Calcular"),
-                _button("Limpar", backgroudColor: Colors.red),
+                _button("Calcular", (){
+                  setState(() {
+                    name = nameTextEditingController.text;
+                    email = emailTextEditingController.text;
+                    grades = "${gradesTextEditingController[0].text} - ${gradesTextEditingController[1].text} - ${gradesTextEditingController[2].text}";
+                    average = _calculateAverage(gradesTextEditingController.map((gradeTextField) => double.parse(gradeTextField.text)).toList()).toStringAsFixed(1);
+                  });
+                }),
+                _button("Limpar", (){
+                  setState(() {
+                    name = "";
+                    email = "";
+                    grades = "";
+                    average = "";
+                    nameTextEditingController.text = "";
+                    emailTextEditingController.text = "";
+                    for(var i = 0; i < gradesTextEditingController.length; i++){
+                      gradesTextEditingController[i].text = "";
+                    }
+                    averageTextEditingController.text = "";
+                  });
+                },
+                backgroudColor: Colors.red),
               ],
             ),
-            _titleField("Resultado: "),
-            _resultField("Nome: "),
-            _resultField("Email: "),
-            _resultField("Notas: "),
-            _resultField("Média: "),
+            _titleField("Resultado:"),
+            _resultField("Nome: ", value: name),
+            _resultField("Email: ", value: email),
+            _resultField("Notas: ", value: grades),
+            _resultField("Média: ", value: average),
           ],
         ),
       )
     );
   }
 
-  Widget _textField(String labelText, String hintText, {TextInputType textInputType = TextInputType.text, bool expanded = false, bool lastField = false}) {
+  Widget _textField(String labelText, String hintText, {TextInputType textInputType = TextInputType.text, bool expanded = false, bool lastField = false, TextEditingController? textEditingController}) {
       var container = Container(
         margin: (!lastField && !expanded) ? EdgeInsets.only(bottom: 10.0) : (!lastField && expanded) ? EdgeInsets.only(right: 10.0) : null,
         child: TextField(
+          controller: textEditingController,
           decoration: InputDecoration(
             labelText: labelText,
             hintText: hintText,
@@ -74,14 +106,13 @@ class _AverageCalculatorState extends State<AverageCalculator>{
       return (!expanded) ? container : Expanded(child: container,);
   }
 
-  Widget _button(String text, {MaterialColor backgroudColor = Colors.blue}){
+  Widget _button(String text, void Function() onPressed, {MaterialColor backgroudColor = Colors.blue}){
     return Container(
       margin: EdgeInsets.all(10.0),
       child: Row(
         children: <Widget>[
           ElevatedButton(
-            onPressed: () {
-            },
+            onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               backgroundColor: backgroudColor
             ),
@@ -121,4 +152,7 @@ class _AverageCalculatorState extends State<AverageCalculator>{
     );
   }
 
+  double _calculateAverage(List<double> grades){
+    return grades.reduce((sum, grade) => sum + grade) / grades.length;
+  }
 }
