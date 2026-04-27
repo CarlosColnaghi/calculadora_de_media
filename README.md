@@ -12,7 +12,7 @@ Também há a opção de limpar os campos preenchidos e reiniciar os dados apres
 
 ## Screenshots
 
-<p align="center">
+<p>
   <img src="screenshots/Screenshot_20260427_202804.png" alt="Tela inicial" width="220">
   <img src="screenshots/Screenshot_20260427_202837.png" alt="Preenchimento do formulário" width="220">
   <img src="screenshots/Screenshot_20260427_202930.png" alt="Preenchimento do formulário" width="220">
