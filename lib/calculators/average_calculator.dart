@@ -28,8 +28,7 @@ class _AverageCalculatorState extends State<AverageCalculator>{
         ),
         backgroundColor: Colors.blue,
       ),
-      body:
-      SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(10.0),
           child: Column(
