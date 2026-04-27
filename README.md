@@ -1,5 +1,7 @@
 # Calculadora de Média
 
+## Introdução
+
 Este é um aplicativo desenvolvido em Flutter como parte dos estudos da disciplina Desenvolvimento Multiplataforma 1 do curso de Especialização em Desenvolvimento de Sistemas para Dispositivos Móveis do IFSP - Câmpus São Carlos.
 
 O objetivo deste projeto é desenvolver uma interface de usuário (UI), explorando widgets do Flutter e componentes baseados no Material Design. Além disso, o projeto trabalha diretamente com `StatefulWidget` e `State`, utilizando o gerenciamento de estado para criar uma aplicação mais dinâmica, capaz de atualizar os dados exibidos na tela conforme a interação do usuário.
