@@ -1,17 +1,20 @@
-# calculadora_de_media
+# Calculadora de Média
 
-Calculadora de Média
+Este é um aplicativo desenvolvido em Flutter como parte dos estudos da disciplina Desenvolvimento Multiplataforma 1 do curso de Especialização em Desenvolvimento de Sistemas para Dispositivos Móveis do IFSP - Câmpus São Carlos.
 
-## Getting Started
+O objetivo deste projeto é desenvolver uma interface de usuário (UI), explorando widgets do Flutter e componentes baseados no Material Design. Além disso, o projeto trabalha diretamente com `StatefulWidget` e `State`, utilizando o gerenciamento de estado para criar uma aplicação mais dinâmica, capaz de atualizar os dados exibidos na tela conforme a interação do usuário.
 
-This project is a starting point for a Flutter application.
+## Sobre o aplicativo
 
-A few resources to get you started if this is your first Flutter project:
+A aplicação permite informar nome, e-mail e três notas. Ao acionar o botão de cálculo, o aplicativo processa os valores informados e exibe o resultado da média diretamente na interface.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Também há a opção de limpar os campos preenchidos e reiniciar os dados apresentados, reforçando o uso de estado para controlar as mudanças visuais e comportamentais da tela.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot_20260427_202804.png" alt="Tela inicial" width="220">
+  <img src="screenshots/Screenshot_20260427_202837.png" alt="Preenchimento do formulário" width="220">
+  <img src="screenshots/Screenshot_20260427_202930.png" alt="Preenchimento do formulário" width="220">
+  <img src="screenshots/Screenshot_20260427_203002.png" alt="Exibição do resultado do cálculo da média" width="220">
+</p>
