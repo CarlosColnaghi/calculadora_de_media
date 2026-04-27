@@ -36,7 +36,7 @@ class _AverageCalculatorState extends State<AverageCalculator>{
             children: <Widget>[
               _titleField("Calculadora de Média"),
               _textField("Nome", "Digite o seu nome (ex: Carlos)", textEditingController: nameTextEditingController),
-              _textField("Email", "Digite o seu email (ex: carlos@email.com)", textInputType: TextInputType.number, textEditingController: emailTextEditingController),
+              _textField("Email", "Digite o seu email (ex: carlos@email.com)", textEditingController: emailTextEditingController),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
